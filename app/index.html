@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!doctype html>
+<html lang="en" ng-app="MinesweeperApp">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Ng-Minesweeper </title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/app.css">
+        <script src="http://code.angularjs.org/1.2.0-rc.3/angular.min.js">
+        </script>
+        <script src="scripts/controllers.js">
+        </script>
+    </head>
+    <body ng-controller="MinesweeperCtrl">
+        <select ng-change="generateTable()" ng-model="level" ng-options="level.desc for level in levels"></select>
+        <table>
+            <tr ng-repeat="row in table" ng-init="rowname = $index">
+                <td ng-repeat=" cell in row" ng-init="cellname = $index">
+                    <button type="button"
+                            class="btn btn-default btn-sm"
+                            ng-click="toggle('{{rowname}}','{{cellname}}');">
+                        <span class="glyphicon {{getCellClass(rowname,cellname);}}"></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+
+        <textarea></textarea>
+    </body>
+</html>
